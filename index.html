@@ -1,0 +1,49 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colorful Name Game</title>
+</head>
+<body style="background-color: #1a1a2e; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div id="game-box" style="border: 3px solid #e94560; border-radius: 15px; padding: 30px; width: 400px; text-align: center; background-color: #16213e; box-shadow: 0 8px 16px rgba(0,0,0,0.3);">
+        <p id="question" style="color: #4ee5b6; font-size: 24px; font-weight: bold; margin-bottom: 20px;">What's your name?</p>
+        <input type="text" id="user-input" style="padding: 10px; width: 80%; border: 2px solid #0f3460; border-radius: 5px; background-color: #0f3460; color: #fff; font-size: 16px; outline: none; margin-bottom: 20px; text-align: center;">
+        <br>
+        <button id="action-btn" onclick="checkStep()" style="padding: 10px 25px; border: none; border-radius: 5px; background-color: #e94560; color: #fff; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s;">Submit</button>
+    </div>
+
+    <script>
+        let step = 1;
+
+        function checkStep() {
+            const input = document.getElementById("user-input");
+            const questionElement = document.getElementById("question");
+            const val = input.value.trim().toLowerCase();
+            
+            if (step === 1) {
+                if (val === "andrew") {
+                    questionElement.innerText = "You are 13. Am I right?";
+                    questionElement.style.color = "#ffdd59";
+                    input.value = "";
+                    step = 2;
+                } else {
+                    questionElement.innerText = "Hello " + input.value + "!";
+                    questionElement.style.color = "#ff5e7e";
+                }
+            } else if (step === 2) {
+                if (val === "yes") {
+                    questionElement.innerText = "I know where u live... I am under your bed";
+                    questionElement.style.color = "#ff4757";
+                } else if (val === "no") {
+                    questionElement.innerText = "LIAR thats why i will boil you ALIVE today";
+                    questionElement.style.color = "#ff6b81";
+                } else {
+                    questionElement.innerText = "Please answer 'yes' or 'no'.";
+                    questionElement.style.color = "#ffa502";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
